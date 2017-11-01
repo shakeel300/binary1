@@ -17,12 +17,12 @@
         "display1Size": 4.25,
         "display2Font": "Rubik",
         "display2Size": 3,
-        "display4Font": "Rubik",
-        "display4Size": 2.45,
         "display5Font": "Rubik",
         "display5Size": 1.5,
         "display7Font": "Rubik",
         "display7Size": 1,
+        "display4Font": "Rubik",
+        "display4Size": 2.45,
         "isRoundedButtons": true,
         "isAnimatedOnScroll": false,
         "isScrollToTopButton": false
@@ -30,7 +30,7 @@
     },
     "versionFirst": "4.0.5",
     "uniqCompNum": 24,
-    "versionPublish": "4.0.5",
+    "versionPublish": "4.4.0",
     "favicon": "@PROJECT_PATH@/assets/images/96795a861581521de54774675124a4fe-128x128.png",
     "noImageResize": ""
   },
@@ -63,10 +63,12 @@
             }
           },
           "_name": "header1",
-          "_customHTML": "<section class=\"header1\" group=\"Headers\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" mbr-class=\"{'mbr-fullscreen': fullScreen,\n                    'mbr-parallax-background': bg.parallax}\">\n    \n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n    <mbr-parameters>\n        <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"9\" step=\"1\" value=\"6\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"9\" step=\"1\" value=\"6\" condition=\"fullScreen == false\">\n\n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Show SubTitle\" name=\"showSubTitle\" checked>\n        <input type=\"checkbox\" title=\"Show Text\" name=\"showText\" checked>\n        <input type=\"checkbox\" title=\"Show Buttons\" name=\"showButtons\" checked>\n\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Background Image\" value=\"@PROJECT_PATH@/assets/images/binomo-back-2-2000x798.png\" selected parallax>\n            <input type=\"color\" title=\"Background Color\" value=\"#886586\">\n            <input type=\"video\" title=\"Background Video\" value=\"http://www.youtube.com/watch?v=uNCr7NdOJgw\">\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#000000\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Overlay Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n    <!-- End block parameters -->\n\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n\n    <div class=\"container\">\n        <div class=\"media-container-column mbr-white col-md-10 offset-md-1\">\n            <h1 class=\"mbr-section-title display-1 align-center mbr-bold pb-3\" mbr-if=\"showTitle\"></h1>\n            <h3 class=\"mbr-section-subtitle display-4 align-center mbr-light pb-3\" mbr-if=\"showSubTitle\"><i>Top Binary Options Brokers</i></h3>\n            <p class=\"mbr-text align-center display-5 pb-3\" mbr-if=\"showText\"></p>\n            <div class=\"mbr-section-btn align-center\" mbr-if=\"showButtons\" mbr-buttons>\n                <a class=\"btn btn-md btn-primary\" href=\"page1.html\" data-app-btn=\"true\">&nbsp; &nbsp; Sign Up for Trading &nbsp;&nbsp;</a>  <a class=\"btn btn-md btn-primary\" href=\"https://affiliate.wow-partners.com/click.php?ctag=a1800-b2-p\" data-app-btn=\"true\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Get Bonus &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</a> <a class=\"btn btn-md btn-secondary\" href=\"https://affiliate.wow-partners.com/view.php?ctag=a1800-b111-p\" data-app-btn=\"true\">&nbsp; &nbsp; &nbsp; &nbsp; Registration &nbsp; &nbsp; &nbsp; &nbsp;</a>\n                <a class=\"btn btn-md btn-white-outline btn-white\" href=\"https://mobirise.com\" data-app-btn=\"true\">&nbsp; &nbsp; &nbsp; &nbsp;Download App &nbsp; &nbsp;&nbsp;</a>\n            </div>\n        </div>\n    </div>\n\n</section>",
+          "_customHTML": "<section class=\"header1\" group=\"Headers\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" mbr-class=\"{'mbr-fullscreen': fullScreen,\n                    'mbr-parallax-background': bg.parallax}\">\n    \n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n    <mbr-parameters>\n        <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"9\" step=\"1\" value=\"6\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"9\" step=\"1\" value=\"6\" condition=\"fullScreen == false\">\n\n        <input type=\"checkbox\" title=\"Show Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Show SubTitle\" name=\"showSubTitle\" checked>\n        <input type=\"checkbox\" title=\"Show Text\" name=\"showText\" checked>\n        <input type=\"checkbox\" title=\"Show Buttons\" name=\"showButtons\" checked>\n\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Background Image\" value=\"@PROJECT_PATH@/assets/images/binomo-back-2-2000x798.png\" selected parallax>\n            <input type=\"color\" title=\"Background Color\" value=\"#886586\">\n            <input type=\"video\" title=\"Background Video\" value=\"http://www.youtube.com/watch?v=uNCr7NdOJgw\">\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#000000\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Overlay Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.2\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n    <!-- End block parameters -->\n\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n\n    <div class=\"container\">\n        <div class=\"media-container-column mbr-white col-md-10 offset-md-1\">\n            <h1 class=\"mbr-section-title display-1 align-center mbr-bold pb-3\" mbr-if=\"showTitle\"></h1>\n            <h3 class=\"mbr-section-subtitle display-4 align-center mbr-light pb-3\" mbr-if=\"showSubTitle\"><i>Top Binary Options Broker</i></h3>\n            <p class=\"mbr-text align-center display-5 pb-3\" mbr-if=\"showText\"></p>\n            <div class=\"mbr-section-btn align-center\" mbr-if=\"showButtons\" mbr-buttons><a class=\"btn btn-md btn-primary\" href=\"page1.html\">&nbsp; &nbsp; Sign Up for Trading &nbsp;&nbsp;</a>   <a class=\"btn btn-md btn-secondary\" href=\"https://affiliate.wow-partners.com/view.php?ctag=a1800-b111-p\">&nbsp; &nbsp; &nbsp; &nbsp; Registration &nbsp; &nbsp; &nbsp; &nbsp;</a>\n                <a class=\"btn btn-md btn-white-outline btn-white\" href=\"https://mobirise.com\">&nbsp; &nbsp; &nbsp; &nbsp;Download App &nbsp; &nbsp;&nbsp;</a></div>\n        </div>\n    </div>\n\n</section>",
           "_cid": "qmHbe3QeZc",
           "_anchor": "header1-f",
           "_protectedParams": [],
+          "_global": false,
+          "_once": false,
           "_params": {}
         },
         {
@@ -453,6 +455,8 @@
           "_cid": "qmHdn4rOQX",
           "_anchor": "menu1-g",
           "_protectedParams": [],
+          "_global": true,
+          "_once": false,
           "_params": {}
         },
         {
@@ -474,6 +478,8 @@
           "_cid": "qmHUuhtfaC",
           "_anchor": "footer6-n",
           "_protectedParams": [],
+          "_global": false,
+          "_once": false,
           "_params": {}
         }
       ]
@@ -868,6 +874,8 @@
           "_cid": "qmHdn4rOQX",
           "_anchor": "menu1-i",
           "_protectedParams": [],
+          "_global": true,
+          "_once": false,
           "_params": {}
         },
         {
@@ -891,6 +899,8 @@
           "_cid": "qmHQc00MNi",
           "_anchor": "header5-l",
           "_protectedParams": [],
+          "_global": false,
+          "_once": false,
           "_params": {}
         }
       ]

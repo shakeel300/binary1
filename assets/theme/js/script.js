@@ -1,4 +1,4 @@
-!function(){try{document.getElementsByClassName("engine")[0].getElementsByTagName("a")[0].removeAttribute("rel")}catch(b){}if(!document.getElementById("top-1")){var a=document.createElement("section");a.id="top-1";a.className="engine";a.innerHTML='<a href="https://mobirise.com">mobirise.com</a> Mobirise v4.0.5';document.body.insertBefore(a,document.body.childNodes[0])}}();
+!function(){try{document.getElementsByClassName("engine")[0].getElementsByTagName("a")[0].removeAttribute("rel")}catch(b){}if(!document.getElementById("top-1")){var a=document.createElement("section");a.id="top-1";a.className="engine";a.innerHTML='<a href="https://mobirise.info">Mobirise</a> Mobirise v4.4.0';document.body.insertBefore(a,document.body.childNodes[0])}}();
 (function($) {
 
     var isBuilder = $('html').hasClass('is-builder');
@@ -710,7 +710,7 @@
                 });
 
                 if ($eventTarget.hasClass('mbr-slider')) {
-                    $eventTarget.find('.slider-fullscreen-image').css('height', '1px');
+                    $eventTarget.find('.full-screen .slider-fullscreen-image').css('height', '1px');
                 }
             }
         });
@@ -769,121 +769,7 @@
         }
     });
 
-    // clients
-    if (isBuilder) {
-        $(document).on('add.cards changeParameter.cards', function(event) {
-            if (!$(event.target).hasClass('clients')) {
-                return;
-            }
-
-            var $target = $(event.target);
-            // Show multiple slides at once
-            var visibleSlides = $target.find('.carousel-inner').attr('data-visible');
-
-            $target.find('.carousel-inner').attr('class', 'carousel-inner slides' + visibleSlides);
-            $target.find('.clonedCol').remove();
-
-            $target.find('.carousel-item .col-md-12').each(function() {
-                if (visibleSlides < 2) {
-                    $(this).attr('class', 'col-md-12');
-                } else if (visibleSlides === '5') {
-                    $(this).attr('class', 'col-md-12 col-lg-15');
-                } else {
-                    $(this).attr('class', 'col-md-12 col-lg-' + 12 / visibleSlides);
-                }
-            });
-
-            $target.find('.carousel-item').each(function() {
-                var itemToClone = $(this);
-
-                for (var i = 1; i < visibleSlides; i++) {
-                    itemToClone = itemToClone.next();
-
-                    // wrap around if at end of item collection
-                    if (!itemToClone.length) {
-                        itemToClone = $(this).siblings(':first');
-                    }
-
-                    var index = itemToClone.index();
-
-                    // grab item, clone, add marker class, add to collection
-                    itemToClone.find('.col-md-12:first').clone()
-                        .addClass('cloneditem-' + i).addClass('clonedCol').attr('data-cloned-index', index)
-                        .appendTo($(this).children().eq(0));
-                }
-            });
-
-            if (event.type === 'add') {
-                // Update all slides
-                $target.on('slide.bs.carousel', function() {
-                    $target.find('.clonedCol').remove();
-                    $target.find('.carousel-item').each(function() {
-                        var itemToClone = $(this);
-
-                        for (var i = 1; i < visibleSlides; i++) {
-                            itemToClone = itemToClone.next();
-
-                            // wrap around if at end of item collection
-                            if (!itemToClone.length) {
-                                itemToClone = $(this).siblings(':first');
-                            }
-
-                            var index = itemToClone.index();
-
-                            // grab item, clone, add marker class, add to collection
-                            itemToClone.find('.col-md-12:first').clone()
-                                .addClass('cloneditem-' + i).addClass('clonedCol').attr('data-cloned-index', index)
-                                .appendTo($(this).children().eq(0));
-                        }
-                    });
-                });
-            }
-        });
-    }
-
     if (!isBuilder) {
-        $(document).on('add.cards', function(event) {
-            if (!$(event.target).hasClass('clients')) {
-                return;
-            }
-
-            var $target = $(event.target);
-            // Show multiple slides at once
-            var visibleSlides = $target.find('.carousel-inner').attr('data-visible');
-
-            if (visibleSlides < 2) {
-                return;
-            }
-
-            $target.find('.carousel-inner').attr('class', 'carousel-inner slides' + visibleSlides);
-
-            $target.find('.carousel-item .col-md-12').each(function() {
-                if (visibleSlides === '5') {
-                    $(this).attr('class', 'col-md-12 col-lg-15');
-                } else {
-                    $(this).attr('class', 'col-md-12 col-lg-' + 12 / visibleSlides);
-                }
-            });
-
-            $target.find('.carousel-item').each(function() {
-                var itemToClone = $(this);
-
-                for (var i = 1; i < visibleSlides; i++) {
-                    itemToClone = itemToClone.next();
-
-                    // wrap around if at end of item collection
-                    if (!itemToClone.length) {
-                        itemToClone = $(this).siblings(':first');
-                    }
-
-                    // grab item, clone, add marker class, add to collection
-                    itemToClone.find('.col-md-12:first').clone()
-                        .addClass('cloneditem-' + i)
-                        .appendTo($(this).children().eq(0));
-                }
-            });
-        });
-
         // open dropdown menu on hover
         if (!$.isMobile()) {
             var $menu = $('section.menu'),
@@ -973,34 +859,39 @@
     function initCountdown() {
         $(".countdown:not(.countdown-inited)").each(function() {
             $(this).addClass('countdown-inited').countdown($(this).attr('data-due-date'), function(event) {
+                
+                var $days = $(event.target).closest('.countdown-cont').find('div.daysCountdown').attr('title');
+                var $hours = $(event.target).closest('.countdown-cont').find('div.hoursCountdown').attr('title');
+                var $minutes = $(event.target).closest('.countdown-cont').find('div.minutesCountdown').attr('title');
+                var $seconds = $(event.target).closest('.countdown-cont').find('div.secondsCountdown').attr('title');             
                 $(this).html(
                     event.strftime([
                         '<div class="row">',
                         '<div class="col-xs-12 col-sm-6 col-md-3">',
                         '<span class="number-wrap">',
                         '<span class="number display-2">%D</span>',
-                        '<span mbr-text class="period display-7">Days</span>',
+                        '<span mbr-text class="period display-7">',$days,'</span>',
                         '<span class="dot">:</span>',
                         '</span>',
                         '</div>',
                         '<div class="col-xs-12 col-sm-6 col-md-3">',
                         '<span class="number-wrap">',
                         '<span class="number display-2">%H</span>',
-                        '<span mbr-text class="period display-7">Hours</span>',
+                        '<span mbr-text class="period display-7">',$hours,'</span>',
                         '<span class="dot">:</span>',
                         '</span>',
                         '</div>',
                         '<div class="col-xs-12 col-sm-6 col-md-3">',
                         '<span class="number-wrap">',
                         '<span class="number display-2">%M</span>',
-                        '<span mbr-text class="period display-7">Minutes</span>',
+                        '<span mbr-text class="period display-7">',$minutes,'</span>',
                         '<span class="dot">:</span>',
                         '</span>',
                         '</div>',
                         '<div class="col-xs-12 col-sm-6 col-md-3">',
                         '<span class="number-wrap">',
                         '<span class="number display-2">%S</span>',
-                        '<span mbr-text class="period display-7">Seconds</span>',
+                        '<span mbr-text class="period display-7">',$seconds,'</span>',
                         '</span>',
                         '</div>',
                         '</div>'
@@ -1090,4 +981,288 @@
     }
 
 
+    // Testimonials Slider
+    function setActiveCarouselItem(card){
+       var $target = $(card).find('.carousel-item:first');
+       $target.addClass('active');
+    } 
+
+    function initTestimonialsCarousel(card){
+        var $target = $(card),
+            $carouselID = $target.attr('ID') +"-carousel"; 
+
+        $target.find('.carousel').attr('id',$carouselID);
+        $target.find('.carousel-controls a').attr('href','#'+$carouselID);
+        setActiveCarouselItem($target);  
+    }
+    
+    if (isBuilder) {
+        $(document).on('add.cards', function(event) {
+            if ($('.testimonials-slider').length != 0) {
+                initTestimonialsCarousel(event.target);
+            }
+        }).on('changeParameter.cards', function(event, paramName, value) {
+            if (paramName === 'testimonialsSlides') {
+                if ($(event.target).find('.carousel-item.active').length==0) {
+                    setActiveCarouselItem(event.target);
+                }
+            }
+        });;
+    } else{
+        if ($('.testimonials-slider').length != 0) {
+            $('.testimonials-slider').each(function(){
+                initTestimonialsCarousel(this);
+            });
+        }
+    }
+
+    // Toggle and Accordion switch arrow
+    if (!isBuilder) {
+        $(document).ready(function() {
+            if ($('.accordionStyles').length!=0) {
+                    $('.accordionStyles .card-header a[role="button"]').each(function(){
+                        if(!$(this).hasClass('collapsed')){
+                            $(this).addClass('collapsed');
+                        }
+                    });
+                }
+        });
+
+        $('.accordionStyles .card-header a[role="button"]').click(function(){
+            var $id = $(this).closest('.accordionStyles').attr('id'),
+                $iscollapsing = $(this).closest('.card').find('.panel-collapse');
+
+            if (!$iscollapsing.hasClass('collapsing')) {
+                if ($id.indexOf('toggle') != -1){
+                    if ($(this).hasClass('collapsed')) {
+                        $(this).find('span.sign').removeClass('mbri-arrow-down').addClass('mbri-arrow-up'); 
+                    }
+                    else{
+                        $(this).find('span.sign').removeClass('mbri-arrow-up').addClass('mbri-arrow-down'); 
+                    }
+                }
+                else if ($id.indexOf('accordion')!=-1) {
+                    var $accordion =  $(this).closest('.accordionStyles ');
+                
+                    $accordion.children('.card').each(function() {
+                        $(this).find('span.sign').removeClass('mbri-arrow-up').addClass('mbri-arrow-down'); 
+                    });
+                    if ($(this).hasClass('collapsed')) {
+                        $(this).find('span.sign').removeClass('mbri-arrow-down').addClass('mbri-arrow-up'); 
+                    }
+                }
+            }
+        });
+    };
+
+    // Clients block
+    function initClientCarousel(card){
+        var $target = $(card),
+        countElems = $target.find('.carousel-item').length,
+        visibleSlides = $target.find('.carousel-inner').attr('data-visible');
+        if (countElems < visibleSlides){
+            visibleSlides = countElems;
+        }
+        $target.find('.carousel-inner').attr('class', 'carousel-inner slides' + visibleSlides);
+        $target.find('.clonedCol').remove();
+
+        $target.find('.carousel-item .col-md-12').each(function() {
+            if (visibleSlides < 2) {
+                $(this).attr('class', 'col-md-12');
+            } else if (visibleSlides == '5') {
+                $(this).attr('class', 'col-md-12 col-lg-15');
+            } else {
+                $(this).attr('class', 'col-md-12 col-lg-' + 12 / visibleSlides);
+            }
+        });
+
+        $target.find('.carousel-item').each(function() {
+            var itemToClone = $(this);
+            for (var i = 1; i < visibleSlides; i++) {
+                itemToClone = itemToClone.next();
+                if (!itemToClone.length) {
+                    itemToClone = $(this).siblings(':first');
+                }
+                var index = itemToClone.index();
+                itemToClone.find('.col-md-12:first').clone().addClass('cloneditem-' + i).addClass('clonedCol').attr('data-cloned-index', index).appendTo($(this).children().eq(0));
+            }
+        });
+    }
+    function updateClientCarousel(card){
+        var $target = $(card),
+            countElems = $target.find('.carousel-item').length,
+            visibleSlides = $target.find('.carousel-inner').attr('data-visible');
+        if (countElems < visibleSlides){
+            visibleSlides = countElems;
+        }
+        $target.find('.clonedCol').remove();
+        $target.find('.carousel-item').each(function() {
+            var itemToClone = $(this);
+            for (var i = 1; i < visibleSlides; i++) {
+                itemToClone = itemToClone.next();
+                if (!itemToClone.length) {
+                    itemToClone = $(this).siblings(':first');
+                }
+                var index = itemToClone.index();
+                itemToClone.find('.col-md-12:first').clone().addClass('cloneditem-' + i).addClass('clonedCol').attr('data-cloned-index', index).appendTo($(this).children().eq(0));
+            }
+        });
+    }
+
+    function clickHandler(e){
+        e.stopPropagation();
+        e.preventDefault();
+
+        var $target = $(e.target);
+        var curItem;
+        var curIndex;
+
+        if ($target.closest('.clonedCol').length) {
+            curItem = $target.closest('.clonedCol');
+            curIndex = curItem.attr('data-cloned-index');
+        } else {
+            curItem = $target.closest('.carousel-item');
+            curIndex = curItem.index();
+        }
+        var item = $($target.closest('.carousel-inner').find('.carousel-item')[curIndex]).find('img')[0];
+                        
+        if ($target.parents('.clonedCol').length > 0) {
+            item.click();
+        }
+    }
+
+    if (isBuilder) {
+        $(document).on('add.cards', function(event) {
+            if (!$(event.target).hasClass('clients')) {
+                return;
+            }
+            initTestimonialsCarousel(event.target);
+            initClientCarousel(event.target);
+            if (event.type === 'add') {       
+                $(event.target).on('slide.bs.carousel', function() {
+                    updateClientCarousel(event.target);
+                });
+            }
+            $(event.target).find('.carousel-item [mbr-media]').on('click', function(e) {
+                clickHandler(e);
+            });
+            $(event.target).on('slide.bs.carousel', function() {
+                $(event.target).find('.carousel-item .clonedCol [mbr-media]').off('click').on('click', function(e) {
+                            clickHandler(e);
+                        });
+            });
+        }).on('changeParameter.cards', function(event, paramName,value) {
+            if (paramName=='slidesCount'){
+                if ($(event.target).find('.carousel-item.active').length==0) {
+                    setActiveCarouselItem(event.target);
+                }                
+            }
+            initClientCarousel(event.target);
+            updateClientCarousel(event.target);
+            $(event.target).find('.carousel-item [mbr-media]').on('click', function(e) {
+                clickHandler(e);
+            });
+            $(event.target).on('slide.bs.carousel', function() {
+                $(event.target).find('.carousel-item .clonedCol [mbr-media]').off('click').on('click', function(e) {
+                            clickHandler(e);
+                        });
+            });
+        }).on('changeContent.cards', function(event,type) {
+           updateClientCarousel(event.target);
+           try{
+            $(event.target).closest('.carousel').carousel('next');
+           }catch(err){}
+        });
+    }
+    else{
+        $(document.body).find('.clients').each(function(index, el) {
+            initTestimonialsCarousel($(this));
+            initClientCarousel($(this));
+        });
+    }
+
+// Table Block;
+    function getRowCount(card){
+        var $tbodyRows = $(card).find('.table tbody tr').length;
+        $(card).find('.dataTables_info span.infoRows').text($tbodyRows);
+    }
+
+    function initTable(card,isSearch, searchText, infoBefore, infoAfter, infoFilteredBefore, infoFilteredAfter){
+        var $target = $(card);
+            $target.find('table').dataTable({
+            retrieve:true,
+            paging:false,
+            aaSorting:[],
+            scrollX:true,
+            searching:isSearch,
+            info: isSearch,
+            language: {
+                "search": searchText,
+                "info": infoBefore + ' _END_ ' + infoAfter,
+                "infoEmpty": infoBefore + ' _END_ ' + infoAfter,
+                "infoFiltered": infoFilteredBefore + ' _MAX_ ' + infoFilteredAfter,
+            }
+        });
+    }
+
+    function getDisplayClass(arr){
+        var display="";
+        $.each(arr, function(index, el) {   
+            if (el.indexOf('display') == 0) {
+                display = el;
+            }
+        });
+        return display;
+    }
+    
+    if (isBuilder){
+        $(document).on('add.cards',function(event) {
+            if($(event.target).hasClass('section-table')){
+                getRowCount(event.target);
+            }    
+        }).on('changeParameter.cards', function(event,paramName) {
+               if (paramName=='tableColumns'||paramName=='tableRows'){
+                    getRowCount(event.target);          
+               }   
+        });;
+    }
+    else{
+        if($(document).find('section.section-table').length!=0){
+            $('section.section-table').each(function() {
+                var isSearch = $(this).find('table').is('.isSearch');
+                if (isSearch){
+                    var infoBefore = $(this).find('.dataTables_info span.infoBefore').text(),
+                        infoAfter = $(this).find('.dataTables_info span.infoAfter').text(),
+                        infoFilteredBefore = $(this).find('.dataTables_info span.infoFilteredBefore').text(),
+                        infoFilteredAfter = $(this).find('.dataTables_info span.infoFilteredAfter').text();
+                        searchText = $(this).find('.dataTables_filter label.searchInfo').text(),
+                        infoClasses = $(this).find('.dataTables_info').attr('class').split(/\s/),
+                        searchClasses = $(this).find('.dataTables_filter label.searchInfo').attr('class').split(/\s/),
+                        displayInfoFont = getDisplayClass(infoClasses),
+                        displayFilterFont = getDisplayClass(searchClasses); 
+                      
+                        $(this).find('.row.search').remove();
+                        $(this).find('.table-wrapper .scroll').removeClass('scroll');
+                        $(this).find('.row.info').remove();
+                        initTable($(this),isSearch, searchText, infoBefore, infoAfter, infoFilteredBefore, infoFilteredAfter);
+                        $(this).find('.dataTables_info').addClass(displayInfoFont);
+                        $(this).find('.dataTables_filter label').addClass(displayFilterFont);
+                }else{
+                    $(this).find('.row.search').remove();
+                    $(this).find('.table-wrapper .scroll').removeClass('scroll');
+                    $(this).find('.row.info').remove();
+                    initTable($(this),isSearch);
+                }
+            });
+        }
+    }
+
+// Cards With Popup Buttons
+    if (!isBuilder) {
+        if ($('section.popup-btn-cards').length!=0) {
+            $('section.popup-btn-cards .card-wrapper').each(function(index, el) {
+                $(this).addClass('popup-btn');
+            });
+        }
+    }
 })(jQuery);
