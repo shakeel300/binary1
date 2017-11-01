@@ -1,5 +1,5 @@
 /*!
- * Test theme v0.1 (https://mobirise.com/)
+ * Mobirise v4 theme (https://mobirise.com/)
  * Copyright 2017 Mobirise
  */
 section {
@@ -18,7 +18,7 @@ a.mbr-iconfont:hover {
   margin-bottom: 0; }
 
 a {
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   cursor: pointer; }
   a, a:hover {
@@ -227,12 +227,13 @@ nav .mbr-section-btn {
   margin-left: 0rem;
   margin-right: 0rem; }
 
-/*! Btn icon padding */
+/*! Btn icon margin */
 .btn .mbr-iconfont, .btn.btn-sm .mbr-iconfont {
-  padding-right: 0.5rem; }
+  cursor: pointer;
+  margin-right: 0.5rem; }
 
 .btn.btn-md .mbr-iconfont, .btn.btn-md .mbr-iconfont {
-  padding-right: 0.8rem; }
+  margin-right: 0.8rem; }
 
 .mbr-regular {
   font-weight: 400; }
